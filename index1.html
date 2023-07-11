@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticket Price Calculator</title>
+  <script>
+    function calculateTicketPrice(age) {
+      let ticketPrice = 0;
+
+      if (age < 0) {
+        return 'Invalid age';
+      } else if (age < 6) {
+        ticketPrice = 0;
+      } else if (age < 18) {
+        ticketPrice = 10;
+      } else if (age < 65) {
+        ticketPrice = 20;
+      } else {
+        ticketPrice = 15;
+      }
+
+      return ticketPrice;
+    }
+
+window.addEventListener('DOMContentLoaded', function() {
+  var submitButton = document.getElementById('submitButton');
+  var outputPara = document.getElementById('ticketPrice');
+
+  submitButton.addEventListener('click', function() {
+    var ageInput = document.getElementById('age').value;
+    var age = parseInt(ageInput);
+
+    var ticketPrice = calculateTicketPrice(age);
+    outputPara.textContent = 'Ticket Price: $' + ticketPrice;
+  });
+});
+</script>
+</head>
+<body>
+<label for="age">Enter Age:</label>
+<input type="text" id="age">
+<br><br>
+<button type="submit" id="submitButton">Submit</button>
+<p id="ticketPrice"></p>
+</body>
+</html>
